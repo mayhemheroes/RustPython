@@ -1,7 +1,7 @@
 project: rust_python
-target: compile_eval
+target: parse_program
 duration: 1800
 testsuite:
-  - file://corpus/compile_eval
+  - file://corpus/parse_program
 cmds:
-    - cmd: /fuzzers/fuzz_compile_eval
+    - cmd: /fuzzers/fuzz_parse_program
