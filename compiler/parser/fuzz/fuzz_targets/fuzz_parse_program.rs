@@ -3,18 +3,10 @@
 use libfuzzer_sys::fuzz_target;
 use rustpython_parser::parse_program;
 
-// use arbitrary to create two strings from the fuzzed data
-use libfuzzer_sys::arbitrary::Arbitrary;
-use libfuzzer_sys::arbitrary::Unstructured;
-
 fuzz_target!(|data: &[u8]| {
-    // generate unstructured
-    let mut unstructured = Unstructured::new(data);
-
-    // generate strings
-    let str_1 = String::arbitrary(&mut unstructured).unwrap_or(String::new());
-    let str_2 = String::arbitrary(&mut unstructured).unwrap_or(String::new());
+    // generate source
+    let source = String::from_utf8_lossy(data).to_string();
     
     // parse program
-    let _ = parse_program(&str_1, &str_2);
+    let _ = parse_program(&source, "<fuzz>");
 });
