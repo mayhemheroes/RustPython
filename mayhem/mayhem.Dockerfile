@@ -10,5 +10,5 @@ RUN cd compiler/parser && cargo +nightly fuzz build --verbose
 
 # Package Stage
 FROM ubuntu:latest
-COPY --from=builder /src/mayhem/parse_program_corpus /corpus/parse_program
+COPY --from=builder /src/mayhem/corpus /corpus
 COPY --from=builder /src/compiler/parser/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz_* /fuzzers/
