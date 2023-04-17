@@ -1,4 +1,4 @@
-// #![no_main]
+#![no_main]
 struct FuzzedDataProvider {
     data: Vec<u8>,
     index: usize,
