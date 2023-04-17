@@ -4,4 +4,4 @@ duration: 1800
 testsuite:
   - file://corpus
 cmds:
-    - cmd: /fuzzers/fuzz_parse_script
+    - cmd: /fuzzers/fuzz_parse_program
