@@ -2,6 +2,6 @@ project: tools
 target: parse_script
 duration: 1800
 testsuite:
-  - file://corpus/parse_script
+  - file://corpus
 cmds:
     - cmd: /fuzzers/fuzz_parse_script
