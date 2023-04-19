@@ -16,5 +16,5 @@ COPY --from=builder /src/compiler/fuzz/corpus/* /corpus/
 COPY --from=builder /src/compiler/parser/fuzz/corpus/* /corpus/
 
 # Copy the compiled fuzzers to the final image.
-COPY --from=builder /src/compiler/target/x86_64-unknown-linux-gnu/release/fuzz_* /fuzzers/
-COPY --from=builder /src/compiler/parser/target/x86_64-unknown-linux-gnu/release/fuzz_* /fuzzers/
+COPY --from=builder /src/compiler/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz_* /fuzzers/
+COPY --from=builder /src/compiler/parser/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz_* /fuzzers/
