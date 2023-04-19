@@ -7,6 +7,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  COMPILE_EVAL_MAYHEMFILE: mayhem/compile_eval.mayhemfile
   PARSE_PROGRAM_MAYHEMFILE: mayhem/parse_program.mayhemfile
 
 jobs:
@@ -47,7 +48,16 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Start analysis
+      - name: Start analysis for compile_eval
+        uses: ForAllSecure/mcode-action@v1
+        with:
+          mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
+          args: 
+            --image ${{ steps.meta.outputs.tags }} 
+            --file ${{ env.COMPILE_EVAL_MAYHEMFILE }}
+            --duration 1800
+          sarif-output: sarif
+      - name: Start analysis for parse_program
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}

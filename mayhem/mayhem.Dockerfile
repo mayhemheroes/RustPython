@@ -9,7 +9,12 @@ WORKDIR /src
 RUN cd compiler && cargo +nightly fuzz build
 RUN cd compiler/parser && cargo +nightly fuzz build
 
-# Package Stage
+# Package stage
 FROM ubuntu:latest
-COPY --from=builder /src/mayhem/corpus /corpus
-COPY --from=builder /src/compiler/parser/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz_* /fuzzers/
+# Copy the corpora to the final image.
+COPY --from=builder /src/compiler/corpus/* /corpus/
+COPY --from=builder /src/compiler/parser/corpus/* /corpus/
+
+# Copy the compiled fuzzers to the final image.
+COPY --from=builder /src/compiler/target/x86_64-unknown-linux-gnu/release/fuzz_* /fuzzers/
+COPY --from=builder /src/compiler/parser/target/x86_64-unknown-linux-gnu/release/fuzz_* /fuzzers/
