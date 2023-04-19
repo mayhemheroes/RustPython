@@ -12,8 +12,8 @@ RUN cd compiler/parser && cargo +nightly fuzz build
 # Package stage
 FROM ubuntu:latest
 # Copy the corpora to the final image.
-COPY --from=builder /src/compiler/corpus/* /corpus/
-COPY --from=builder /src/compiler/parser/corpus/* /corpus/
+COPY --from=builder /src/compiler/fuzz/corpus/* /corpus/
+COPY --from=builder /src/compiler/parser/fuzz/corpus/* /corpus/
 
 # Copy the compiled fuzzers to the final image.
 COPY --from=builder /src/compiler/target/x86_64-unknown-linux-gnu/release/fuzz_* /fuzzers/
