@@ -57,6 +57,7 @@ jobs:
             --file ${{ env.COMPILE_EVAL_MAYHEMFILE }}
             --duration 1800
           sarif-output: sarif
+
       - name: Start analysis for parse_program
         uses: ForAllSecure/mcode-action@v1
         with:
