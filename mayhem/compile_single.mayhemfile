@@ -1,0 +1,7 @@
+project: rust_python
+target: compile_single
+duration: 600
+cmds:
+    - cmd: /fuzzers/fuzz_compile_single
+testsuite:
+    - file://corpus/compiler
