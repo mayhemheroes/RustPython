@@ -5,7 +5,7 @@ FROM ghcr.io/evanrichter/cargo-fuzz:latest AS BUILDER
 ADD . /src
 WORKDIR /src
 
-# Compile the fuzzers.
+# Compile the fuzzers
 RUN cd compiler && cargo +nightly fuzz build
 RUN cd compiler/parser && cargo +nightly fuzz build
 
