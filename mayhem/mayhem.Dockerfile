@@ -1,5 +1,5 @@
 # Build Stage
-FROM ghcr.io/evanrichter/cargo-fuzz:latest AS builder
+FROM ghcr.io/evanrichter/cargo-fuzz:latest AS BUILDER
 
 # Add source code to the build stage.
 ADD . /src
