@@ -1,7 +1,7 @@
 project: rust_python
 target: compile_eval
-duration: 1800
+duration: 600
 cmds:
     - cmd: /fuzzers/fuzz_compile_eval
 testsuite:
-  - file://corpus/compile_eval
+    - file://corpus/compiler
