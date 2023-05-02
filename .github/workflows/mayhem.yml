@@ -58,54 +58,21 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        compile_eval_mayhemfile:
+        mayhemfile:
           - mayhem/compile_eval.mayhemfile
-        compile_exec_mayhemfile:
           - mayhem/compile_exec.mayhemfile
-        compile_single_mayhemfile:
           - mayhem/compile_single.mayhemfile
-        compile_block_expr_mayhemfile:
           - mayhem/compile_block_expr.mayhemfile
-        parse_program_mayhemfile:
           - mayhem/parse_program.mayhemfile
 
     steps:
       - uses: actions/checkout@v3
 
-
-      - name: Start analysis for ${{ matrix.compile_eval_mayhemfile }}
+      - name: Start analysis for ${{ matrix.mayhemfile }}
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ needs.build.outputs.image }} --file ${{ matrix.compile_eval_mayhemfile }} --duration 600
-          sarif-output: sarif
-
-      - name: Start analysis for ${{ matrix.compile_exec_mayhemfile }}
-        uses: ForAllSecure/mcode-action@v1
-        with:
-          mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ needs.build.outputs.image }} --file ${{ matrix.compile_exec_mayhemfile }} --duration 600
-          sarif-output: sarif
-
-      - name: Start analysis for ${{ matrix.compile_single_mayhemfile }}
-        uses: ForAllSecure/mcode-action@v1
-        with:
-          mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ needs.build.outputs.image }} --file ${{ matrix.compile_single_mayhemfile }} --duration 600
-          sarif-output: sarif
-
-      - name: Start analysis for ${{ matrix.compile_block_expr_mayhemfile }}
-        uses: ForAllSecure/mcode-action@v1
-        with:
-          mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ needs.build.outputs.image }} --file ${{ matrix.compile_block_expr_mayhemfile }} --duration 600
-          sarif-output: sarif
-
-      - name: Start analysis for ${{ matrix.parse_program_mayhemfile }}
-        uses: ForAllSecure/mcode-action@v1
-        with:
-          mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ needs.build.outputs.image }} --file ${{ matrix.parse_program_mayhemfile }} --duration 600
+          args: --image ${{ needs.build.outputs.image }} --file ${{ matrix.mayhemfile }} --duration 600
           sarif-output: sarif
 
       - name: Upload SARIF file(s)
