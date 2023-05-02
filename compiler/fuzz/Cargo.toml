@@ -20,3 +20,21 @@ name = "fuzz_compile_eval"
 path = "fuzz_targets/compile_eval.rs"
 test = false
 doc = false
+
+[[bin]]
+name = "fuzz_compile_exec"
+path = "fuzz_targets/compile_exec.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "fuzz_compile_single"
+path = "fuzz_targets/compile_single.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "fuzz_compile_block_expr"
+path = "fuzz_targets/compile_block_expr.rs"
+test = false
+doc = false
