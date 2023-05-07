@@ -1,0 +1,40 @@
+[package]
+name = "fuzz_compiler"
+version = "0.0.0"
+authors = ["Automatically generated"]
+publish = false
+edition = "2018"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4.0"
+rustpython-compiler = { path = ".." }
+
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "fuzz_compile_eval"
+path = "fuzz_targets/compile_eval.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "fuzz_compile_exec"
+path = "fuzz_targets/compile_exec.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "fuzz_compile_single"
+path = "fuzz_targets/compile_single.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "fuzz_compile_block_expr"
+path = "fuzz_targets/compile_block_expr.rs"
+test = false
+doc = false

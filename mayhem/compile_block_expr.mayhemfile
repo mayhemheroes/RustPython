@@ -1,0 +1,7 @@
+project: rust_python
+target: compile_block_expr
+duration: 600
+cmds:
+    - cmd: /fuzzers/fuzz_compile_block_expr
+testsuite:
+    - file://corpus/compiler
